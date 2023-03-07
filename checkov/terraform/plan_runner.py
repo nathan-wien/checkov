@@ -247,7 +247,7 @@ class Runner(TerraformRunner):
                     record.set_guideline(check.guideline)
                     report.add_record(record=record)
 
-    def get_entity_context_and_evaluations(self, entity):
+    def get_entity_context_and_evaluations(self, entity: dict):
         entity_id = entity[TF_PLAN_RESOURCE_ADDRESS]
         raw_context = self.context.get(entity[CustomAttributes.FILE_PATH], {}).get(entity_id)
         if raw_context:

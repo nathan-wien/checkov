@@ -10,7 +10,7 @@ from checkov.terraform.graph_builder.graph_components.blocks import TerraformBlo
 
 def convert_graph_vertices_to_tf_definitions(
     vertices: List[TerraformBlock], root_folder: str
-) -> Tuple[Dict[str, Dict[str, Any]], Dict[str, Dict[str, Any]]]:
+) -> Tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     tf_definitions: Dict[str, Dict[str, Any]] = {}
     breadcrumbs: Dict[str, Dict[str, Any]] = {}
     for vertex in vertices:

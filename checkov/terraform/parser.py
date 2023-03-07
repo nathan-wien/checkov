@@ -37,7 +37,7 @@ class Parser:
         self._parsed_directories: set[str] = set()
         self.external_modules_source_map: Dict[Tuple[str, str], str] = {}
         self.module_address_map: Dict[Tuple[str, str], str] = {}
-        self.loaded_files_map = {}
+        self.loaded_files_map: dict = {}
 
         # This ensures that we don't try to double-load modules
         # Tuple is <file>, <module_index>, <name> (see _load_modules)

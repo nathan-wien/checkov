@@ -6,7 +6,7 @@ import os
 import re
 from abc import ABC, abstractmethod
 from collections.abc import Iterable
-from typing import List, Any, TYPE_CHECKING, TypeVar, Generic, Dict
+from typing import List, Any, TYPE_CHECKING, TypeVar, Generic, Dict, Union
 
 from checkov.common.graph.db_connectors.igraph.igraph_db_connector import IgraphConnector
 from checkov.common.graph.db_connectors.networkx.networkx_db_connector import NetworkxConnector
@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from checkov.common.typing import _CheckResult, LibraryGraphConnector
 
 _GraphManager = TypeVar("_GraphManager", bound="GraphManager[Any, Any]|None")
+# RunnerDefinitions = TypeVar("RunnerDefinitions", bound=Union[Dict[str, Union[Dict[str, Any], List[Dict[str, Any]]]], None])
 
 
 def strtobool(val: str) -> int:

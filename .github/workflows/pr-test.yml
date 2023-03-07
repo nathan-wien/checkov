@@ -1,6 +1,12 @@
 name: PR Test
 
-on: pull_request
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/*.rst"
+  pull_request:
 
 permissions: read-all
 
@@ -140,7 +146,7 @@ jobs:
       - name: Build & install checkov package
         run: |
           pipenv --python ${{ matrix.python }}
-          # 'py' package is used in 'pytest-benchmark', but 'pytest' removed it in their latest version         
+          # 'py' package is used in 'pytest-benchmark', but 'pytest' removed it in their latest version
           pipenv run pip install pytest pytest-benchmark py
           pipenv run python setup.py sdist bdist_wheel
           bash -c 'pipenv run pip install dist/checkov-*.whl'
@@ -182,7 +188,7 @@ jobs:
 
       - name: Build & install checkov package
         run: |
-          pipenv --python ${{ env.PYTHON_VERSION }}     
+          pipenv --python ${{ env.PYTHON_VERSION }}
           pipenv run pip install pytest pytest-xdist
           pipenv run python setup.py sdist bdist_wheel
           bash -c 'pipenv run pip install dist/checkov-*.whl'
